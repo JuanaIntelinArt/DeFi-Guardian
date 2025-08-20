@@ -1,0 +1,521 @@
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeFi Guardian</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        /* Variables de color para facilitar la edición */
+        :root {
+            --bg-color-main: #E6F0E0;
+            --bg-color-card: #F3F4F6;
+            --text-color-primary: #4B5563;
+            --button-color-cta: #4CAF50;
+            --button-color-secondary: #E5E7EB;
+            --button-color-hover-cta: #388E3C;
+            --button-color-hover-secondary: #D1D5DB;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color-main);
+            color: var(--text-color-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 16px; /* Padding reducido en móviles */
+            background-color: var(--bg-color-card);
+            border-radius: 16px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 24px; /* Espaciado ajustado para móviles */
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding: 32px; /* Padding normal en escritorio */
+                gap: 32px;
+            }
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem; /* Tamaño de fuente ajustado para móviles */
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        @media (min-width: 768px) {
+            .header {
+                flex-direction: row;
+                text-align: left;
+            }
+            .header h1 {
+                font-size: 2.5rem; /* Tamaño de fuente normal en escritorio */
+            }
+        }
+
+        .header nav {
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas */
+            justify-content: center;
+            gap: 0.5rem; /* Espaciado reducido */
+            margin-top: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .header nav {
+                flex-wrap: nowrap;
+                gap: 1rem; /* Espaciado normal */
+            }
+        }
+
+        .header nav a {
+            text-decoration: none;
+            color: var(--text-color-primary);
+            padding: 8px 4px; /* Padding para hacer el enlace más fácil de tocar */
+            transition: color 0.3s ease;
+        }
+
+        .header nav a:hover {
+            color: var(--button-color-hover-cta);
+        }
+        
+        .header nav button {
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .header nav .btn-register {
+            background-color: var(--button-color-cta);
+            color: white;
+        }
+
+        .header nav .btn-register:hover {
+            background-color: var(--button-color-hover-cta);
+        }
+
+        .section {
+            background-color: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .grid-container {
+            display: flex;
+            flex-direction: column; /* Apila las secciones en móviles */
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* 2 columnas en escritorio */
+                gap: 32px;
+            }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column; /* Apila la etiqueta y el input en móviles */
+            gap: 8px;
+        }
+        
+        @media (min-width: 768px) {
+            .input-group {
+                flex-direction: row; /* Vuelve a la fila en escritorio */
+                align-items: center;
+            }
+            .input-group label {
+                width: 60px; /* Vuelve al ancho fijo */
+            }
+        }
+
+        .input-group input, .input-group textarea {
+            flex-grow: 1;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #D1D5DB;
+            font-size: 1rem;
+            width: 100%; /* Asegura que el input ocupe todo el ancho disponible */
+            box-sizing: border-box;
+        }
+        
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: var(--button-color-cta);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+        }
+        
+        .cta-button {
+            background-color: var(--button-color-cta);
+            color: white;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .cta-button:hover {
+            background-color: var(--button-color-hover-cta);
+        }
+
+        .secondary-button {
+            background-color: var(--button-color-secondary);
+            color: var(--text-color-primary);
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        
+        .secondary-button:hover {
+            background-color: var(--button-color-hover-secondary);
+        }
+        
+        .message-box {
+            position: fixed;
+            bottom: 16px; /* Posición ajustada para móviles */
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            z-index: 1000;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            width: calc(100% - 32px); /* Ancho ajustado para móviles */
+            max-width: 400px;
+        }
+
+        .message-box.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .message-box.success {
+            background-color: #10B981;
+        }
+
+        .message-box.error {
+            background-color: #EF4444;
+        }
+
+        .analysis-output {
+            padding: 16px;
+            border-radius: 8px;
+            background-color: #F9FAFB;
+            color: #4B5563;
+        }
+        
+        .section h2, .section h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section p {
+            font-size: 0.875rem;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="header">
+        <h1>DeFi Guardian</h1>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Análisis de la IA</a>
+            <a href="#">Soporte</a>
+            <a href="#">Log In</a>
+            <button class="btn-register">Registrar</button>
+        </nav>
+    </header>
+
+    <section class="section">
+        <h2>¿No estás seguro de qué camino tomar?</h2>
+        <p style="font-size: 0.875rem; color: #6B7280;">
+            Nuestro sistema de IA analiza constantemente el mercado y te sugiere estrategias de trading adaptadas a tus objetivos y tolerancia al riesgo. Toma decisiones más inteligentes con el respaldo de datos y algoritmos avanzados.
+        </p>
+    </section>
+
+    <div class="grid-container">
+        <section class="section">
+            <h3>DeFi Guardian</h3>
+            <button id="bot-toggle-btn" class="cta-button">
+                Iniciar Bot
+            </button>
+        </section>
+
+        <section class="section">
+            <h3>Estado del Portafolio</h3>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div class="input-group">
+                    <label for="usd-input">USD</label>
+                    <input type="number" id="usd-input" value="0" />
+                </div>
+                <div class="input-group">
+                    <label for="eth-input">ETH</label>
+                    <input type="number" id="eth-input" value="0" />
+                </div>
+            </div>
+            <div style="margin-top: 1rem; text-align: center;">
+                <span id="total-value" style="font-size: 1.5rem; font-weight: 700;">Valor total (USD): $0.00</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3>Análisis de la IA</h3>
+            <button id="analyze-btn" class="cta-button">
+                Análisis de la IA
+            </button>
+            <div id="analysis-output" style="margin-top: 1rem; display: none;">
+                <p></p>
+            </div>
+            <button class="secondary-button" style="margin-top: 1rem;">
+                Aprende DeFi
+            </button>
+        </section>
+
+        <section class="section">
+            <h3>Análisis de amenazas</h3>
+            <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1rem;">
+                Añade un texto o un contrato para una evaluación de seguridad.
+            </p>
+            <textarea id="threat-input" rows="4" style="width: 100%; margin-bottom: 1rem;"></textarea>
+            <button id="threat-analyze-btn" class="cta-button">
+                Analizar amenaza
+            </button>
+            <div id="threat-analysis-output" style="margin-top: 1rem; display: none;">
+                <p></p>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div id="message-box" class="message-box"></div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // Global variables
+    let db;
+    let auth;
+    let userId;
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+    const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+    let portfolio = {
+        usd: 0,
+        eth: 0,
+        botActive: false
+    };
+
+    // DOM element references
+    const usdInput = document.getElementById('usd-input');
+    const ethInput = document.getElementById('eth-input');
+    const totalValueSpan = document.getElementById('total-value');
+    const botToggleBtn = document.getElementById('bot-toggle-btn');
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const analysisOutputDiv = document.getElementById('analysis-output');
+    const threatInput = document.getElementById('threat-input');
+    const threatAnalyzeBtn = document.getElementById('threat-analyze-btn');
+    const threatAnalysisOutputDiv = document.getElementById('threat-analysis-output');
+    const messageBox = document.getElementById('message-box');
+
+    // Utility functions
+    const showMessage = (message, type = 'success') => {
+        messageBox.textContent = message;
+        messageBox.className = `message-box visible ${type}`;
+        setTimeout(() => {
+            messageBox.className = 'message-box';
+        }, 3000);
+    };
+
+    const updateUI = () => {
+        usdInput.value = portfolio.usd;
+        ethInput.value = portfolio.eth;
+        const totalValue = (portfolio.usd || 0) + ((portfolio.eth || 0) * 2000);
+        totalValueSpan.textContent = `Valor total (USD): $${totalValue.toFixed(2)}`;
+        botToggleBtn.textContent = portfolio.botActive ? 'Detener Bot' : 'Iniciar Bot';
+    };
+
+    const savePortfolio = async (updatedPortfolio) => {
+        if (!db || !userId) return;
+        try {
+            const userDocRef = doc(db, 'artifacts', appId, 'users', userId, 'data', 'portfolio');
+            await setDoc(userDocRef, updatedPortfolio);
+        } catch (e) {
+            console.error("Error al guardar el portafolio:", e);
+            showMessage("No se pudo guardar la información. Por favor, inténtalo de nuevo.", "error");
+        }
+    };
+
+    // Event handlers
+    const handlePortfolioChange = (e) => {
+        const { id, value } = e.target;
+        let key = id.replace('-input', '');
+        portfolio[key] = parseFloat(value) || 0;
+        updateUI();
+        savePortfolio(portfolio);
+    };
+
+    const handleBotToggle = async () => {
+        portfolio.botActive = !portfolio.botActive;
+        updateUI();
+        await savePortfolio(portfolio);
+        showMessage(`Bot de IA ${portfolio.botActive ? 'iniciado' : 'detenido'}.`, 'success');
+    };
+
+    const handleAnalyze = async () => {
+        analysisOutputDiv.style.display = 'block';
+        analysisOutputDiv.querySelector('p').textContent = 'Analizando el portafolio y el mercado. Esto puede tomar unos segundos...';
+        
+        const prompt = `Analiza el siguiente portafolio de criptomonedas y ofrece una estrategia de trading y una predicción del mercado.
+            Portafolio:
+            - USD: ${portfolio.usd}
+            - ETH: ${portfolio.eth}
+            - Estado del bot: ${portfolio.botActive ? 'activo' : 'inactivo'}.
+            - El análisis debe ser breve y conciso, en español, y adecuado para un usuario principiante.
+            - Formato de respuesta: "Análisis: [Tu análisis]. Estrategia sugerida: [Tu estrategia]."
+        `;
+
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=`;
+        const payload = {
+            contents: [{ role: "user", parts: [{ text: prompt }] }]
+        };
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const result = await response.json();
+            analysisOutputDiv.querySelector('p').textContent = result.candidates[0].content.parts[0].text;
+        } catch (error) {
+            console.error('Error al llamar a la API de Gemini:', error);
+            analysisOutputDiv.querySelector('p').textContent = 'Error al obtener el análisis. Por favor, inténtalo de nuevo.';
+            showMessage("Error en el análisis de IA.", "error");
+        }
+    };
+
+    const handleThreatAnalyze = async () => {
+        const threatText = threatInput.value.trim();
+        if (!threatText) {
+            showMessage("Por favor, introduce un texto o un contrato para analizar.", "error");
+            return;
+        }
+
+        threatAnalysisOutputDiv.style.display = 'block';
+        threatAnalysisOutputDiv.querySelector('p').textContent = 'Analizando el texto en busca de posibles amenazas o vulnerabilidades...';
+        
+        const prompt = `Analiza el siguiente texto o fragmento de código para identificar posibles amenazas, vulnerabilidades de seguridad, o malas prácticas en el contexto de contratos inteligentes o seguridad informática.
+            Texto: "${threatText}"
+            - El análisis debe ser breve y conciso, en español.
+            - Si no hay amenazas evidentes, responde con un mensaje de seguridad.
+            - Formato de respuesta: "Resultado: [Tu análisis]. Recomendación: [Tu recomendación]."
+        `;
+
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=`;
+        const payload = {
+            contents: [{ role: "user", parts: [{ text: prompt }] }]
+        };
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const result = await response.json();
+            threatAnalysisOutputDiv.querySelector('p').textContent = result.candidates[0].content.parts[0].text;
+        } catch (error) {
+            console.error('Error al llamar a la API de Gemini:', error);
+            threatAnalysisOutputDiv.querySelector('p').textContent = 'Error al obtener el análisis de amenazas. Por favor, inténtalo de nuevo.';
+            showMessage("Error en el análisis de amenazas.", "error");
+        }
+    };
+
+    // Initialize the app
+    window.onload = async function() {
+        try {
+            const app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+
+            let userCred;
+            if (initialAuthToken) {
+                userCred = await signInWithCustomToken(auth, initialAuthToken);
+            } else {
+                userCred = await signInAnonymously(auth);
+            }
+            userId = userCred.user.uid;
+
+            // Subscribe to Firestore changes
+            const userDocRef = doc(db, 'artifacts', appId, 'users', userId, 'data', 'portfolio');
+            onSnapshot(userDocRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    portfolio = docSnap.data();
+                    updateUI();
+                }
+            }, (error) => {
+                console.error("Error listening to Firestore changes:", error);
+                showMessage("Error de conexión en tiempo real con la base de datos.", "error");
+            });
+
+            // Add event listeners
+            usdInput.addEventListener('input', handlePortfolioChange);
+            ethInput.addEventListener('input', handlePortfolioChange);
+            botToggleBtn.addEventListener('click', handleBotToggle);
+            analyzeBtn.addEventListener('click', handleAnalyze);
+            threatAnalyzeBtn.addEventListener('click', handleThreatAnalyze);
+            
+            updateUI();
+
+        } catch (error) {
+            console.error("Error initializing Firebase:", error);
+            showMessage("Error al conectar con la base de datos. Por favor, recarga la página.", "error");
+        }
+    };
+</script>
+</body>
+</html>
