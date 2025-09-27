@@ -1,65 +1,67 @@
-🛡️ DeFi Guardian
-¡Bienvenido al repositorio de DeFi Guardian!
+ 🛡️ DeFi Guardian | Repositorio Oficial
 
-DeFi Guardian es una aplicación web intuitiva y poderosa diseñada para ayudar a los usuarios a monitorear y gestionar sus activos en el mundo de las finanzas descentralizadas (DeFi). El objetivo es proporcionar una visión clara y en tiempo real del portafolio del usuario, así como ofrecer alertas y análisis de mercado para tomar decisiones informadas.
+**DeFi Guardian** es una **Plataforma de Monitoreo y Gestión de Portafolio** implementada como una aplicación web (Single Page Application - SPA). Su propósito es proporcionar una **interfaz de gestión de activos digitales descentralizados (DeFi)**, facilitando la **observación en tiempo real** del valor del portafolio, la **analítica de mercado** y la generación de **alertas programáticas** para soportar la toma de decisiones informadas por parte del usuario.
 
-🚀 Características Principales
-Resumen del Portafolio: Una vista general del valor total de tus activos, desglosados por criptomoneda.
+## 🚀 Módulos Funcionales Clave
 
-Monitoreo en Tiempo Real: Precios actualizados de activos clave como Bitcoin, Ethereum y Solana.
+  * **Dashboard de Portafolio Agregado:** Provisión de una visualización sinóptica del **Valor Total Bloqueado (TVL)** del usuario, con desglose detallado por *token* (e.g., BTC, ETH, SOL).
+  * **Monitoreo Asíncrono de Precios:** Actualización continua de *feeds* de precios para activos críticos, asegurando la **coherencia de datos en tiempo real**.
+  * **Sistema de Notificaciones/Alertas:** Implementación de un *mecanismo de trigger* para notificar al usuario sobre fluctuaciones de precios o eventos de mercado predefinidos.
+  * **Diseño Interoperable (Responsive Design):** Arquitectura **'mobile-first'** que garantiza la **adaptabilidad de la Interfaz de Usuario (UI)** en diversos *viewports* (escritorio y móvil).
 
-Alertas del Mercado: Notificaciones sobre movimientos significativos de precios.
+## 🛠️ Stack Tecnológico
 
-Diseño Responsivo: Una interfaz de usuario moderna y adaptable que funciona perfectamente en dispositivos móviles y de escritorio.
+El proyecto está construido sobre un *stack* de desarrollo *frontend* moderno y performante:
 
-🛠️ Tecnologías Utilizadas
-React: Una biblioteca de JavaScript para construir interfaces de usuario interactivas.
+  * **React:** **Biblioteca de JavaScript** fundamental para la construcción de componentes de UI reactivos y el manejo eficiente del **Document Object Model (DOM)**.
+  * **Vite:** **Bundler y entorno de desarrollo** de próxima generación, utilizado para la inyección de módulos en caliente (*Hot Module Replacement - HMR*) y la optimización del proceso de *build*.
+  * **Tailwind CSS:** **Framework CSS utilitario** empleado para la estilización rápida y modular de la interfaz de usuario, minimizando la necesidad de CSS custom.
+  * **JavaScript (ES6+):** Lenguaje de *scripting* principal para la **lógica del lado del cliente** y la gestión del estado de la aplicación.
+  * **(Opcional): Integración API *Third-Party***: Conexión potencial a **APIs de datos *blockchain* y *market data*** (e.g., CoinGecko, CoinMarketCap) para la ingesta de información.
 
-Vite: Un entorno de desarrollo rápido para proyectos de frontend modernos.
+-----
 
-Tailwind CSS: Un framework CSS para construir rápidamente diseños personalizados.
+## ⚙️ Configuración y Despliegue Local
 
-JavaScript: Lógica del lado del cliente para la interactividad de la aplicación.
+Para la puesta en marcha local de la aplicación, siga la siguiente **secuencia de comandos** en su terminal:
 
-(Opcional, si agregas una API): Integración con API de datos de criptomonedas (como CoinGecko o CoinMarketCap).
+1.  **Clonación del Repositorio:**
+    ```bash
+    git clone https://github.com/JuanaIntelinArt/DeFi-Guardian.git
+    ```
+2.  **Navegación al Directorio Raíz del Proyecto:**
+    ```bash
+    cd DeFi-Guardian
+    ```
+3.  **Instalación de Dependencias del Proyecto:**
+    ```bash
+    npm install
+    ```
+4.  **Ejecución del Servidor de Desarrollo:**
+    ```bash
+    npm run dev
+    ```
+    El *runtime* de la aplicación será accesible a través de `http://localhost:5173` (el puerto puede variar). La funcionalidad HMR permite la **recarga automática** tras cualquier modificación en el código fuente.
 
-📄 Estructura del Proyecto
-/src: Contiene el código fuente de la aplicación React.
+-----
 
-App.jsx: El componente principal que gestiona el estado y la estructura del dashboard.
+## 🤝 Protocolo de Contribución
 
-index.css: Estilos globales de la aplicación.
+Se alienta la contribución a este proyecto. El protocolo preferido es el siguiente:
 
-/public: Archivos estáticos como el icono de Vite.
+1.  **Reporte de *Issues***: Abrir un *issue* para la notificación de *bugs* o la propuesta formal de nuevas *features*.
+2.  ***Fork*** **y *Pull Request***: Para la contribución de código, se requiere hacer un *fork* del repositorio y enviar un *Pull Request (PR)* a la rama principal (`main`) con una descripción clara de los cambios implementados.
 
-package.json: Definiciones de dependencias y scripts del proyecto.
+-----
 
-⚙️ Configuración y Ejecución
-Para ejecutar la aplicación localmente, sigue estos sencillos pasos:
+## 📝 Licenciamiento
 
-Clona el repositorio:
+Este *software* está distribuido bajo los términos de la **Licencia MIT**. Refiérase al archivo `LICENSE` para conocer los detalles completos.
 
-git clone https://github.com/JuanaIntelinArt/DeFi-Guardian.git
-
-Navega al directorio del proyecto:
-
-cd DeFi-Guardian
-
-Instala las dependencias:
-
-npm install
-
-Inicia el servidor de desarrollo:
-
-npm run dev
-
-La aplicación se ejecutará en http://localhost:5173 (o un puerto similar) y se recargará automáticamente al realizar cambios en el código.
-
-🤝 Contribuciones
-Si deseas contribuir a DeFi Guardian, ¡eres más que bienvenido! Puedes abrir un issue para reportar un error o sugerir una nueva característica. Para enviar una contribución, por favor, haz un fork del repositorio y crea un pull request.
-
-📝 Licencia
-Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
-
-👨‍💻 Creado por
-Juana InteliArt
+  * **Autoría:** Juana InteliArt
+  * **Estructura del Proyecto:**
+      * `/src`: Módulos del código fuente de React.
+      * `App.jsx`: Componente funcional principal y *layout* del *dashboard*.
+      * `index.css`: Definiciones de estilos a nivel global.
+      * `/public`: Recursos estáticos (e.g., favicon).
+      * `package.json`: Metadatos y definición de la *dependency graph*.
